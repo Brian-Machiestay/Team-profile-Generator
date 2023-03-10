@@ -35,7 +35,7 @@ const generateTeam = team => {
             <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank" rel="noopener noreferrer">${engineer.getGithub()}</a></li>
         </ul>
     </div>
-</div>
+    </div>
         `;
     };
 
@@ -54,7 +54,7 @@ const generateTeam = team => {
             <li class="list-group-item">School: ${intern.getSchool()}</li>
         </ul>
     </div>
-</div>
+    </div>
         `;
     };
 
@@ -76,7 +76,6 @@ const generateTeam = team => {
     );
 
     return html.join("");
-
 }
 
 // exports function to generate entire page
