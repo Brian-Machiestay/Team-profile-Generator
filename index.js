@@ -31,26 +31,27 @@ async function build_team() {
     const engineer_details = [
         {name: 'name', message: 'Enter engineer\'s name >>> ', type: 'input'},
         {name: 'id', message: 'Enter engineer\'s employee id >>> ', type: 'input'},
-        {name: 'officeNum', message: 'Enter the engineer\'s email >>> ', type: 'input'},
+        {name: 'email', message: 'Enter the engineer\'s email >>> ', type: 'input'},
         {name: 'userName', message: 'Enter the engineer\'s github user name', type: 'input'},
     ]
 
     const intern_details = [
         {name: 'name', message: 'Enter intern\'s name >>> ', type: 'input'},
         {name: 'id', message: 'Enter the intern\'s employee id >>> ', type: 'input'},
-        {name: 'officeNum', message: 'Enter the intern\'s email >>> ', type: 'input'},
-        {name: 'userName', message: 'Enter the intern\'s school', type: 'input'},
+        {name: 'email', message: 'Enter the intern\'s email >>> ', type: 'input'},
+        {name: 'school', message: 'Enter the intern\'s school', type: 'input'},
     ]
     while (choice !== 'Finish Building the team') {
         const ans = await inquirer.prompt(team);
-        console.log(ans)
         if (ans.team === 'Add an engineer') {
             const eng_ans = await inquirer.prompt(engineer_details);
-            console.log(eng_ans)
+            const ob = new Engineer(eng_ans.name, eng_ans.id, eng_ans.email, eng_ans.userName);
+            employees.push(ob);
         }
         else if (ans.team === 'Add an intern') {
             const int_ans = await inquirer.prompt(intern_details);
-            console.log(int_ans)
+            const obj = new Intern(int_ans.name, int_ans.id, int_ans.email, int_ans.school);
+            employees.push(obj); 
         }
         choice = ans.team;
     }
@@ -58,6 +59,7 @@ async function build_team() {
 
 async function build() {
     await build_team().then();
+    console.log(render(employees))
     console.log(employees);
 }
 
