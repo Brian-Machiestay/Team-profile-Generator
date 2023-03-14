@@ -27,7 +27,7 @@ This software uses The MIT License
 ## Contributing  
  - fork this repository and create a pull request  
 ## Tests  
- - No tests added at this time  
+ - All tests are defined in __tests__
 ## Questions  
 Have any questions?  
 Email: Brianmachiestay@gmail.com  
