@@ -32,14 +32,14 @@ async function build_team() {
         {name: 'name', message: 'Enter engineer\'s name >>> ', type: 'input'},
         {name: 'id', message: 'Enter engineer\'s employee id >>> ', type: 'input'},
         {name: 'email', message: 'Enter the engineer\'s email >>> ', type: 'input'},
-        {name: 'userName', message: 'Enter the engineer\'s github user name', type: 'input'},
+        {name: 'userName', message: 'Enter the engineer\'s github user name >>> ', type: 'input'},
     ]
 
     const intern_details = [
         {name: 'name', message: 'Enter intern\'s name >>> ', type: 'input'},
         {name: 'id', message: 'Enter the intern\'s employee id >>> ', type: 'input'},
         {name: 'email', message: 'Enter the intern\'s email >>> ', type: 'input'},
-        {name: 'school', message: 'Enter the intern\'s school', type: 'input'},
+        {name: 'school', message: 'Enter the intern\'s school >>> ', type: 'input'},
     ]
     while (choice !== 'Finish Building the team') {
         const ans = await inquirer.prompt(team);
@@ -58,9 +58,10 @@ async function build_team() {
 }
 
 async function build() {
-    await build_team().then();
-    console.log(render(employees))
-    console.log(employees);
+    await build_team();
+    fs.writeFile(outputPath, render(employees), (err) => {
+        if (err) throw err;
+    })
 }
 
 build();
